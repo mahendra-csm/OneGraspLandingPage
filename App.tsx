@@ -318,7 +318,7 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 01
             </span>
-            <h2 className="text-6xl md:text-7xl font-black mb-6 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight text-gray-900 font-poppins">
               1. <span className="text-black-600">Career COUNSELLING +</span><br />
               <span className="text-blue-600">Psychometric TEST</span>
             </h2>
@@ -389,13 +389,13 @@ const App: React.FC = () => {
           <div className="grid lg:grid-cols-[1fr_1fr] gap-x-12 gap-y-16 items-start mb-32">
 
             {/* Left Col: Career Counselling Matrix */}
-            <div className="space-y-10 bg-slate-100/50 p-8 md:p-10 rounded-[3.5rem] border border-slate-200/60 shadow-sm transition-all hover:shadow-md">
+            <div className="space-y-10 bg-slate-100/50 p-6 md:p-10 rounded-[2.5rem] sm:rounded-[3.5rem] border border-slate-200/60 shadow-sm transition-all hover:shadow-md">
               <h3 className="text-2xl font-black text-slate-800 mb-2 flex items-center gap-3">
                 <Brain className="w-8 h-8 text-teal-500" />
                 Diagnosis Dimensions
               </h3>
               {/* The Analysis Matrix - Reference Infographic Style */}
-              <div className="grid grid-cols-[100px_1fr_1fr] md:grid-cols-[140px_1fr_1fr] gap-x-4 md:gap-x-8 gap-y-6 text-sm items-center overflow-x-auto md:overflow-visible pb-4 md:pb-0">
+              <div className="grid grid-cols-[80px_1fr_1fr] md:grid-cols-[140px_1fr_1fr] gap-x-3 md:gap-x-8 gap-y-6 text-[10px] sm:text-sm items-center overflow-x-auto md:overflow-visible pb-4 md:pb-0">
                 {/* Headers */}
                 <div className="hidden md:block"></div>
 
@@ -604,9 +604,9 @@ const App: React.FC = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]"></span>
                     Limited Time Offer
                   </span>
-                  <div className="flex items-baseline justify-center md:justify-start gap-4">
-                    <span className="text-5xl lg:text-7xl font-black text-white tracking-tighter">₹2500</span>
-                    <span className="text-xl lg:text-2xl text-slate-500 line-through decoration-red-400 decoration-2 font-bold">₹5000</span>
+                  <div className="flex items-baseline justify-center md:justify-start gap-3 sm:gap-4">
+                    <span className="text-4xl sm:text-7xl font-black text-white tracking-tighter">₹2500</span>
+                    <span className="text-lg sm:text-2xl text-slate-500 line-through decoration-red-400 decoration-2 font-bold">₹5000</span>
                   </div>
                   <p className="text-[10px] lg:text-xs text-slate-400 mt-4 font-bold tracking-[0.2em] uppercase opacity-70">Unified Psychometric Assessment + Comprehensive Student Dashboard Tools</p>
                 </div>
@@ -621,14 +621,14 @@ const App: React.FC = () => {
           </div>
 
           {/* Middle Section: 40 Min Test */}
-          <div className="mb-32 relative text-center space-y-16">
+          <div className="mb-32 relative text-center space-y-10 sm:space-y-16">
             <div>
-              <div className="inline-block mb-4 px-7 py-3 rounded-full bg-slate-50 border border-slate-100 shadow-sm">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900">
+              <div className="inline-block mb-4 px-5 sm:px-7 py-2 sm:py-3 rounded-2xl sm:rounded-full bg-slate-50 border border-slate-100 shadow-sm">
+                <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight">
                   40 Min Test Saves
                 </h2>
               </div>
-              <h3 className="text-2.5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">
+              <h3 className="text-3xl sm:text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">
                 40 Years Struggle
               </h3>
             </div>
@@ -692,7 +692,7 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 02
             </span>
-            <h2 className="text-6xl md:text-7xl font-black mb-6 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight text-gray-900 font-poppins">
               2. <span className="text-blue-600">Study Abroad</span>
             </h2>
             <p className="text-xl text-gray-500 font-semibold max-w-3xl leading-relaxed font-poppins">
@@ -795,8 +795,8 @@ const App: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                       >
-                        <p className="text-6xl font-black text-[#27AEBD] leading-none mb-1">20+</p>
-                        <p className="text-sm font-bold text-slate-900 tracking-wide uppercase">Countries</p>
+                        <p className="text-4xl sm:text-6xl font-black text-[#27AEBD] leading-none mb-1">20+</p>
+                        <p className="text-[10px] sm:text-sm font-bold text-slate-900 tracking-wide uppercase">Countries</p>
                       </motion.div>
 
                       <motion.div
@@ -804,8 +804,8 @@ const App: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
-                        <p className="text-6xl font-black text-[#D37126] leading-none mb-1">3000+</p>
-                        <p className="text-sm font-bold text-slate-900 tracking-wide uppercase">Universities</p>
+                        <p className="text-4xl sm:text-6xl font-black text-[#D37126] leading-none mb-1">3000+</p>
+                        <p className="text-[10px] sm:text-sm font-bold text-slate-900 tracking-wide uppercase">Universities</p>
                       </motion.div>
                     </div>
                   </div>
@@ -895,9 +895,9 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 03
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-gray-900 font-poppins">
               3. <span className="text-blue-600">India Admissions</span><br />
-              <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-500">Oncampus-2000+ Uni. & Online-600+ Uni.</span>
+              <span className="text-xl sm:text-2xl md:text-5xl font-bold text-gray-500">Oncampus-2000+ Uni. & Online-600+ Uni.</span>
             </h2>
           </div>
 
@@ -945,7 +945,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Detailed Course Listing Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 reveal-on-scroll border border-gray-200 rounded-2xl overflow-hidden shadow-xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 reveal-on-scroll border border-gray-200 rounded-2xl overflow-hidden shadow-xl">
                 {[
                   {
                     t: "Software & Tech",
@@ -1028,7 +1028,7 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 04
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
               4. <span className="text-blue-600">Certifications</span>
             </h2>
             <p className="text-xl text-gray-500 font-semibold max-w-3xl leading-relaxed font-poppins">
@@ -1115,7 +1115,7 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 05
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
               5. Scientific <span className="text-blue-600">Events</span>
             </h2>
             <p className="text-xl text-gray-500 font-semibold max-w-3xl leading-relaxed font-poppins">
@@ -1257,7 +1257,7 @@ const App: React.FC = () => {
             <span className="text-blue-600 font-extrabold uppercase tracking-widest text-sm mb-4 block font-poppins">
               Service 06
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 lg:mb-10 leading-tight text-gray-900 font-poppins">
               6. Startups <span className="text-blue-600">Support</span>
             </h2>
             <p className="text-xl text-gray-500 font-semibold max-w-3xl leading-relaxed font-poppins">
