@@ -395,108 +395,118 @@ const App: React.FC = () => {
                 Diagnosis Dimensions
               </h3>
               {/* The Analysis Matrix - Reference Infographic Style */}
-              <div className="grid grid-cols-[80px_1fr_1fr] md:grid-cols-[140px_1fr_1fr] gap-x-3 md:gap-x-8 gap-y-6 text-[10px] sm:text-sm items-center overflow-x-auto md:overflow-visible pb-4 md:pb-0">
-                {/* Headers */}
-                <div className="hidden md:block"></div>
-
-                {/* Pill Header 1 */}
-                <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold py-2.5 md:py-3 px-4 md:px-6 rounded-full text-center shadow-lg shadow-teal-200/50 text-[10px] md:text-sm whitespace-nowrap">
-                  What We Analyze
-                </div>
-
-                {/* Pill Header 2 */}
-                <div className="bg-gradient-to-r from-amber-400 to-orange-400 text-white font-bold py-2.5 md:py-3 px-4 md:px-6 rounded-full text-center shadow-lg shadow-amber-200/50 text-[10px] md:text-sm whitespace-nowrap">
-                  Your Benefit
+              <div className="flex flex-col gap-8 md:gap-0">
+                {/* Desktop Headers */}
+                <div className="hidden md:grid grid-cols-[140px_1fr_1fr] gap-8 mb-6">
+                  <div />
+                  <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold py-3 px-6 rounded-full text-center shadow-lg shadow-teal-200/50 text-sm whitespace-nowrap">
+                    What We Analyze
+                  </div>
+                  <div className="bg-gradient-to-r from-amber-400 to-orange-400 text-white font-bold py-3 px-6 rounded-full text-center shadow-lg shadow-amber-200/50 text-sm whitespace-nowrap">
+                    Your Benefit
+                  </div>
                 </div>
 
                 {/* ROW 1: PERSONALITY */}
-                <div className="bg-cyan-200 h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <Users className="w-8 h-8 mb-2 text-slate-800" />
-                  <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Personality</span>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
+                  <div className="bg-cyan-200 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                    <Users className="w-8 h-8 mb-2 text-slate-800" />
+                    <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Personality</span>
+                  </div>
+                  <div className="flex flex-col justify-center order-2">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Self-Understanding:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We assess your most dominant preferences—from how you focus energy to how you make decisions based on logic.</p>
+                  </div>
+                  <div className="flex flex-col justify-center order-3">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Aligns You:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Expand your career options in alignment with your unique personality for a more rewarding career choice.</p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Self-Understanding:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">We assess your most dominant preferences—from how you focus energy to how you make decisions based on logic.</p>
-                </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Aligns You:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">Expand your career options in alignment with your unique personality for a more rewarding career choice.</p>
-                </div>
-                {/* Divider */}
-                <div className="col-span-3 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 2: INTERESTS */}
-                <div className="bg-amber-200 h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <Target className="w-8 h-8 mb-2 text-slate-800" />
-                  <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Interests</span>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
+                  <div className="bg-amber-200 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                    <Target className="w-8 h-8 mb-2 text-slate-800" />
+                    <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Interests</span>
+                  </div>
+                  <div className="flex flex-col justify-center order-2">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Occupational Interest:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We identify your top interest patterns (e.g., detail-oriented work with data, or analytical problem-solving).</p>
+                  </div>
+                  <div className="flex flex-col justify-center order-3">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Finds Your Fit:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Identifies a clear career focus directly linked to occupations you'll enjoy.</p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Occupational Interest:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">We identify your top interest patterns (e.g., detail-oriented work with data, or analytical problem-solving).</p>
-                </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Finds Your Fit:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">Identifies a clear career focus directly linked to occupations you'll enjoy.</p>
-                </div>
-                {/* Divider */}
-                <div className="col-span-3 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 3: MOTIVATORS */}
-                <div className="bg-orange-400 h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <Lightbulb className="w-8 h-8 mb-2 text-white" />
-                  <span className="font-black text-white text-xs uppercase tracking-wider">Motivators</span>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
+                  <div className="bg-orange-400 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                    <Lightbulb className="w-8 h-8 mb-2 text-white" />
+                    <span className="font-black text-white text-xs uppercase tracking-wider">Motivators</span>
+                  </div>
+                  <div className="flex flex-col justify-center order-2">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Core Values:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We find what you value most in a career, like working independently or enjoying work routine.</p>
+                  </div>
+                  <div className="flex flex-col justify-center order-3">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Ensures Fulfillment:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">A career in line with your core beliefs is more likely to be a lasting and positive choice.</p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Core Values:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">We find what you value most in a career, like working independently or enjoying work routine.</p>
-                </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Ensures Fulfillment:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">A career in line with your core beliefs is more likely to be a lasting and positive choice.</p>
-                </div>
-                {/* Divider */}
-                <div className="col-span-3 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 4: SKILLS */}
-                <div className="bg-sky-300 h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <BrainCircuit className="w-8 h-8 mb-2 text-slate-900" />
-                  <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Skills</span>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
+                  <div className="bg-sky-300 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                    <BrainCircuit className="w-8 h-8 mb-2 text-slate-900" />
+                    <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Skills</span>
+                  </div>
+                  <div className="flex flex-col justify-center order-2">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Talent Mapping:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We score your strengths (e.g, Excellent Verbal Ability and Good Logical Ability) and areas needing development.</p>
+                  </div>
+                  <div className="flex flex-col justify-center order-3">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Strategic Development:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Helps you identify different ways to reshape your career direction and focus on skills that give you a career advantage.</p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Talent Mapping:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">We score your strengths (e.g, Excellent Verbal Ability and Good Logical Ability) and areas needing development.</p>
-                </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Strategic Development:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">Helps you identify different ways to reshape your career direction and focus on skills that give you a career advantage.</p>
-                </div>
-                {/* Divider */}
-                <div className="col-span-3 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 5: LEARNING */}
-                <div className="bg-yellow-300 h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <Brain className="w-8 h-8 mb-2 text-slate-900" />
-                  <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Learning</span>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0">
+                  <div className="bg-yellow-300 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                    <Brain className="w-8 h-8 mb-2 text-slate-900" />
+                    <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Learning</span>
+                  </div>
+                  <div className="flex flex-col justify-center order-2">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Optimal Learning:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">For instance, the report shows a high preference for Auditory Learning (50%).</p>
+                  </div>
+                  <div className="flex flex-col justify-center order-3">
+                    <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
+                    <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Boosts Academics:</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Provides concrete strategies (like working in groups or listening to recorded notes) to maximize your study efficiency.</p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Optimal Learning:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">For instance, the report shows a high preference for Auditory Learning (50%).</p>
-                </div>
-                <div className="flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm font-bold mb-1">Boosts Academics:</strong>
-                  <p className="text-slate-600 text-xs leading-relaxed">Provides concrete strategies (like working in groups or listening to recorded notes) to maximize your study efficiency.</p>
-                </div>
-                {/* Divider */}
-                <div className="col-span-3 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 6: EXAMS */}
-                <div className="bg-slate-800 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm">
-                  <GraduationCap className="w-8 h-8 mb-2 text-amber-400" />
-                  <span className="font-black text-amber-400 text-[10px] md:text-xs uppercase tracking-wider">Exams</span>
-                </div>
-                <div className="col-span-2 flex flex-col justify-center h-full">
-                  <strong className="block text-slate-900 text-sm md:text-lg font-black mb-1">Entrance Exams & Scholarships</strong>
-                  <p className="text-slate-600 text-[10px] md:text-xs leading-relaxed font-medium">Prep for IIT-JEE, NEET, CLAT, etc. <span className="text-blue-600 font-bold">Get up to 100% Scholarship.</span></p>
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-8 items-stretch md:items-center py-8">
+                  <div className="bg-slate-800 h-24 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none">
+                    <GraduationCap className="w-8 h-8 mb-2 text-amber-400" />
+                    <span className="font-black text-amber-400 text-[10px] md:text-xs uppercase tracking-wider">Exams</span>
+                  </div>
+                  <div className="flex flex-col justify-center h-full">
+                    <strong className="block text-slate-900 text-sm md:text-lg font-black mb-1">Entrance Exams & Scholarships</strong>
+                    <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed font-medium">Prep for IIT-JEE, NEET, CLAT, etc. <span className="text-blue-600 font-bold">Get up to 100% Scholarship.</span></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -611,10 +621,15 @@ const App: React.FC = () => {
                   <p className="text-[10px] lg:text-xs text-slate-400 mt-4 font-bold tracking-[0.2em] uppercase opacity-70">Unified Psychometric Assessment + Comprehensive Student Dashboard Tools</p>
                 </div>
                 <div className="w-full md:w-auto">
-                  <button className="w-full md:px-12 lg:px-16 py-5 lg:py-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-sm lg:text-lg font-black uppercase tracking-widest rounded-2xl shadow-[0_20px_40px_-10px_rgba(245,158,11,0.4)] transition-all transform hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 group">
+                  <a
+                    href="https://onegrasp.edumilestones.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full md:px-12 lg:px-16 py-5 lg:py-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-sm lg:text-lg font-black uppercase tracking-widest rounded-2xl shadow-[0_20px_40px_-10px_rgba(245,158,11,0.4)] transition-all transform hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 group"
+                  >
                     Take Assessment Now
                     <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -705,7 +720,7 @@ const App: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-stretch justify-between gap-12">
 
               {/* Left: Titles & Feature List */}
-              <div className="flex-1">
+              <div className="flex-1 flex flex-col lg:justify-center">
                 {/* Feature List (Free / Fee) */}
                 <div className="space-y-8">
                   {/* FREE Section */}
@@ -880,6 +895,18 @@ const App: React.FC = () => {
             <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
               <img src="/assets/study_abroad_logos_2.png" alt="University Logos 2" className="w-full h-auto object-contain mix-blend-multiply" />
             </div>
+          </div>
+
+          {/* Explore Destinations Button */}
+          <div className="mt-12 flex justify-center reveal-on-scroll">
+            <a
+              href="https://onegrasp.edumilestones.com/abroad-studies/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-16 py-7 bg-blue-600 text-white font-black rounded-3xl text-2xl shadow-3xl shadow-blue-500/40 hover:bg-blue-700 transition-all active:scale-95 button-shine font-poppins flex items-center gap-4"
+            >
+              Explore Destinations <ChevronRight className="w-8 h-8" />
+            </a>
           </div>
 
         </div>
@@ -1099,9 +1126,14 @@ const App: React.FC = () => {
 
               {/* Enroll Now Button */}
               <div className="mt-12 flex justify-center reveal-on-scroll">
-                <button className="px-16 py-7 bg-blue-600 text-white font-black rounded-3xl text-2xl shadow-3xl shadow-blue-500/40 hover:bg-blue-700 transition-all active:scale-95 button-shine font-poppins flex items-center gap-4">
+                <a
+                  href="https://onegrasp.com/courses/advanced-generative-ai-certification-course/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-16 py-7 bg-blue-600 text-white font-black rounded-3xl text-2xl shadow-3xl shadow-blue-500/40 hover:bg-blue-700 transition-all active:scale-95 button-shine font-poppins flex items-center gap-4"
+                >
                   Enroll Now <ChevronRight className="w-8 h-8" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -1245,6 +1277,18 @@ const App: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+            </div>
+
+            {/* Explore More Events Button */}
+            <div className="mt-12 flex justify-center reveal-on-scroll">
+              <a
+                href="https://onegrasp.com/events/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-16 py-7 bg-blue-600 text-white font-black rounded-3xl text-2xl shadow-3xl shadow-blue-500/40 hover:bg-blue-700 transition-all active:scale-95 button-shine font-poppins flex items-center gap-4"
+              >
+                Explore More Events <ChevronRight className="w-8 h-8" />
+              </a>
             </div>
           </div>
         </div>
