@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneGrasp - From Classroom to Boardroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --secondary: #0F766E;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F9FAFB;
+            color: #111827;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* High-Visibility Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Custom Hover & Shine Effects */
+        .button-shine {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .button-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: none;
+        }
+
+        .button-shine:hover::after {
+            left: 150%;
+            transition: all 0.6s ease;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Rotating Border Animation for Special Cards */
+        .border-gradient {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(to right, var(--primary), var(--secondary)) border-box;
+            border: 2px solid transparent;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-drift {
+            animation: drift 4s ease-in-out infinite;
+        }
+
+        /* Horizontal Scrolling for Partners */
+        .partner-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Service Navigator (TOC) styles */
+        .toc-card {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, border-color 200ms ease;
+            transition-delay: var(--delay, 0ms);
+            box-shadow: 0 1px 4px rgba(16,24,40,0.04);
+            position: relative;
+            overflow: hidden;
+            background-clip: padding-box;
+            padding: 1.6rem; /* larger card spacing */
+            min-height: 96px; /* wider-than-tall feel */
+        }
+
+        .toc-card.visible { opacity: 1; transform: translateY(0); }
+
+
+        .toc-card:hover { transform: translateY(-6px) rotateY(-2deg); box-shadow: 0 18px 48px rgba(16,24,40,0.14); background: rgba(37,99,235,0.04); }
+
+        .toc-card .icon-wrap { transition: transform 220ms ease, color 180ms ease; display:flex; align-items:center; }
+        .toc-card:hover .icon-wrap { transform: scale(1.12); }
+        .toc-card .icon { transition: color 220ms cubic-bezier(.0,.0,.2,1), transform 260ms cubic-bezier(.0,.0,.2,1); }
+        .toc-card:hover .icon { color: #1d4ed8; transform: scale(1.1); }
+
+        /* subtle background image overlay inside each card */
+        .toc-card { position: relative; }
+        .toc-card .card-bg {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            width: 60%;
+            background-size: cover;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            opacity: 0.04;
+            transition: opacity 280ms ease-out, transform 280ms ease-out;
+            pointer-events: none;
+            z-index: 0;
+            transform: translateZ(0) scale(1);
+        }
+
+        .toc-card:hover .card-bg { opacity: 0.14; transform: scale(1.02); }
+
+        .toc-card .card-content { position: relative; z-index: 1; }
+
+        /* Prefer reduced motion: remove non-essential transforms */
+        @media (prefers-reduced-motion: reduce) {
+            .toc-card, .toc-card .card-bg, .toc-card .icon, .chevron-wrap { transition: none !important; transform: none !important; }
+        }
+
+        /* left accent bar animates top -> bottom using scaleY */
+        .toc-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 260ms ease, background 200ms ease;
+        }
+
+        .toc-card:hover::before { transform: scaleY(1); background: var(--primary); }
+
+        /* chevron appears and slides right on hover */
+        .chevron-wrap { transition: transform 220ms ease, opacity 220ms ease; display:flex; align-items:center }
+        .chevron-wrap { opacity: 0; transform: translateX(-6px); }
+        .toc-card:hover .chevron-wrap { transform: translateX(8px); opacity: 1; }
+        .chevron { transform: translateX(0); }
+
+        .toc-card.active { border-color: rgba(37,99,235,0.36); background: rgba(37,99,235,0.06); }
+
+        /* when any card active, mute the rest */
+        #service-navigator .grid.toc-has-active .toc-card.muted { opacity: 0.6; }
+
+        /* Heading focus animation after clicking card */
+        .section-focus { position: relative; animation: slideUpFade 300ms ease forwards; }
+        @keyframes slideUpFade { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .section-focus::after { content: ''; display: block; height: 3px; background: var(--primary); width: 0%; margin-top: 8px; transition: width 320ms ease; }
+        .section-focus { --primary: #2563EB; }
+        .section-focus.section-focus-active::after { width: 100%; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

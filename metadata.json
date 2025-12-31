@@ -1,0 +1,8 @@
+
+{
+  "name": "OneGrasp - Future-Proof Your Journey",
+  "description": "Premium educational landing page for OneGrasp, highlighting career counseling, study abroad, Indian degrees, and startup support.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
