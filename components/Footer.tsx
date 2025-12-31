@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, Globe, Instagram, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Globe, Instagram, Linkedin, Facebook, Youtube, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
     const services = [
@@ -19,6 +19,13 @@ const Footer: React.FC = () => {
         { name: 'Privacy Policy', href: '#' },
     ];
 
+    const socialLinks = [
+        { icon: Linkedin, href: 'https://www.linkedin.com/company/onegrasp/', label: 'LinkedIn' },
+        { icon: Instagram, href: 'https://www.instagram.com/onegrasp?igsh=MWF5bGM5YTRobHVpYw%3D%3D&utm_source=qr', label: 'Instagram' },
+        { icon: Facebook, href: 'https://www.facebook.com/share/1EqZSLrsEe/?mibextid=wwXIfr', label: 'Facebook' },
+        { icon: Youtube, href: 'https://youtube.com/@onegrasp?si=vTVaNUbq2PZ-vpu6', label: 'YouTube' },
+    ];
+
     return (
         <footer className="bg-[#020617] text-white pt-24 pb-12 overflow-hidden relative">
             {/* Background Decorative Element */}
@@ -36,9 +43,16 @@ const Footer: React.FC = () => {
                             </p>
                         </div>
                         <div className="flex gap-4">
-                            {[Linkedin, Instagram, Twitter].map((Icon, i) => (
-                                <a key={i} href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all border border-white/10 group">
-                                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
+                                    className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all border border-white/10 group"
+                                >
+                                    <social.icon className="w-5 h-5 text-gray-400 group-hover:text-white" />
                                 </a>
                             ))}
                         </div>

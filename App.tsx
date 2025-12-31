@@ -1141,12 +1141,11 @@ const App: React.FC = () => {
               {/* Enroll Now Button */}
               <div className="mt-12 flex justify-center reveal-on-scroll">
                 <a
-                  href="https://onegrasp.com/courses/advanced-generative-ai-certification-course/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-16 py-7 bg-blue-600 text-white font-black rounded-3xl text-2xl shadow-3xl shadow-blue-500/40 hover:bg-blue-700 transition-all active:scale-95 button-shine font-poppins flex items-center gap-4"
                 >
-                  Enroll Now <ChevronRight className="w-8 h-8" />
+                  Contact for Discounted Price <ChevronRight className="w-8 h-8" />
                 </a>
               </div>
             </div>
@@ -1258,8 +1257,8 @@ const App: React.FC = () => {
               <span className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25"></span>
               <div className="relative px-10 py-4 bg-white rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
                 <div className="w-3 h-3 rounded-full bg-blue-600 animate-pulse"></div>
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter font-poppins">
-                  Explore Conference <span className="text-blue-600">Domains & Disciplines</span>
+                <h3 className="text-2xl md:text-3xl font-black text-slate-900   font-poppins">
+                  Explore Conference <span className="text-blue-600">Domains  &  Disciplines</span>
                 </h3>
               </div>
             </div>
@@ -1431,7 +1430,7 @@ const App: React.FC = () => {
                 onClick={() => setIsFreeSessionModalOpen(true)}
                 className="w-full sm:w-64 h-16 bg-[#2563eb] text-white font-black rounded-2xl text-base shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all active:scale-95"
               >
-                Book FREE Session
+                Book FREE Session - Call Us
               </button>
               <a
                 href="https://wa.me/918977760443"
