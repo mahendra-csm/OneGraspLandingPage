@@ -155,7 +155,9 @@ import {
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import EvaluationModal from './components/EvaluationModal'; // Import Modal
+import EvaluationModal from './components/EvaluationModal';
+import SessionBookingModal from './components/SessionBookingModal';
+import FreeSessionModal from './components/FreeSessionModal';
 import ServicesShowcase from './components/ServicesShowcase';
 import Footer from './components/Footer';
 import { ASSESSMENT_AREAS } from './constants';
@@ -177,6 +179,8 @@ const CONFERENCE_CATEGORIES = [
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('UG');
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal State lifted
+  const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
+  const [isFreeSessionModalOpen, setIsFreeSessionModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>(''); // Track pre-selected service
 
   // Handler for opening modal with optional pre-selected service
@@ -303,6 +307,16 @@ const App: React.FC = () => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         preSelectedService={selectedService}
+      />
+
+      <SessionBookingModal
+        isOpen={isSessionModalOpen}
+        onClose={() => setIsSessionModalOpen(false)}
+      />
+
+      <FreeSessionModal
+        isOpen={isFreeSessionModalOpen}
+        onClose={() => setIsFreeSessionModalOpen(false)}
       />
 
       <ServicesShowcase onOpenModal={handleOpenModal} />
@@ -1344,7 +1358,10 @@ const App: React.FC = () => {
                 <p className="text-xl text-gray-400 font-bold leading-relaxed mb-10">
                   Exclusive introductions to active angel networks and venture capital firms.
                 </p>
-                <button className="px-10 py-5 bg-white text-gray-900 font-black rounded-3xl text-xl hover:scale-105 transition-transform active:scale-95 shadow-2xl">
+                <button
+                  onClick={() => setIsSessionModalOpen(true)}
+                  className="px-10 py-5 bg-white text-gray-900 font-black rounded-3xl text-xl hover:scale-105 transition-transform active:scale-95 shadow-2xl"
+                >
                   Validate your Idea
                 </button>
               </div>
@@ -1410,12 +1427,20 @@ const App: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 justify-center relative z-10">
-              <button className="w-full sm:w-64 h-16 bg-[#2563eb] text-white font-black rounded-2xl text-base shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all active:scale-95">
+              <button
+                onClick={() => setIsFreeSessionModalOpen(true)}
+                className="w-full sm:w-64 h-16 bg-[#2563eb] text-white font-black rounded-2xl text-base shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all active:scale-95"
+              >
                 Book FREE Session
               </button>
-              <button className="w-full sm:w-64 h-16 bg-[#FDBB30] text-slate-900 font-black rounded-2xl text-base shadow-xl shadow-amber-500/20 hover:-translate-y-1 transition-all active:scale-95">
+              <a
+                href="https://wa.me/918977760443"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-64 h-16 bg-[#FDBB30] text-slate-900 font-black rounded-2xl text-base shadow-xl shadow-amber-500/20 hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center"
+              >
                 Contact Experts
-              </button>
+              </a>
             </div>
 
             {/* Clean Contact Strip */}
