@@ -630,7 +630,7 @@ const App: React.FC = () => {
                   </span>
                   <div className="flex items-baseline justify-center md:justify-start gap-3 sm:gap-4">
                     <span className="text-4xl sm:text-7xl font-black text-white tracking-tighter">₹2500</span>
-                    <span className="text-4xl sm:text-7xl text-slate-500 line-through decoration-red-400 decoration-4 font-bold opacity-50">₹5000</span>
+                    <span className="text-4xl sm:text-7xl font-black text-white tracking-tighter line-through decoration-red-500 decoration-[6px] ">₹5000</span>
                   </div>
                   <p className="text-[10px] lg:text-xs text-slate-400 mt-4 font-bold tracking-[0.2em] uppercase opacity-70">Unified Psychometric Assessment + Comprehensive Student Dashboard Tools</p>
                 </div>
