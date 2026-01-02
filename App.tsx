@@ -183,6 +183,34 @@ const App: React.FC = () => {
   const [isFreeSessionModalOpen, setIsFreeSessionModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>(''); // Track pre-selected service
 
+  // Strip tracking query params (e.g., _gl, utm, gclid) from the URL for a cleaner shareable link
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const trackingParams = [
+      '_gl',
+      'gclid',
+      '_ga',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content'
+    ];
+
+    let changed = false;
+    trackingParams.forEach((param) => {
+      if (url.searchParams.has(param)) {
+        url.searchParams.delete(param);
+        changed = true;
+      }
+    });
+
+    if (changed) {
+      const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+      window.history.replaceState({}, document.title, nextUrl);
+    }
+  }, []);
+
   // Handler for opening modal with optional pre-selected service
   const handleOpenModal = (serviceName?: string) => {
     if (serviceName) {
