@@ -188,7 +188,7 @@ const EvaluationModal: React.FC<EvaluationModalProps> = ({ isOpen, onClose, preS
                                 ) : (
                                     <>
                                         <MessageCircle size={16} />
-                                        <span>WhatsApp: 8977760443</span>
+                                        <span>Chat on WhatsApp: 8977760443</span>
                                     </>
                                 )}
                             </button>
