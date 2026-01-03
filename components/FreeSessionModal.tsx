@@ -29,15 +29,40 @@ const FreeSessionModal: React.FC<FreeSessionModalProps> = ({ isOpen, onClose }) 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setTimeout(() => {
-            setIsSuccess(false);
-            onClose();
-            setFormData({ name: '', email: '', phone: '', query: '', timeSlot: '' });
-        }, 2500);
+        
+        try {
+            const formDataToSend = new FormData();
+            formDataToSend.append("access_key", "68a9e3ab-4678-4d09-9a42-6d91c440e355");
+            formDataToSend.append("name", formData.name);
+            formDataToSend.append("email", formData.email);
+            formDataToSend.append("phone", formData.phone);
+            formDataToSend.append("query", formData.query);
+            formDataToSend.append("preferred_time", formData.timeSlot);
+            formDataToSend.append("subject", `New Free Session Booking - ${formData.timeSlot}`);
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formDataToSend
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setIsSubmitting(false);
+                setIsSuccess(true);
+                setTimeout(() => {
+                    setIsSuccess(false);
+                    onClose();
+                    setFormData({ name: '', email: '', phone: '', query: '', timeSlot: '' });
+                }, 2500);
+            } else {
+                setIsSubmitting(false);
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            setIsSubmitting(false);
+            alert("Failed to submit. Please check your internet connection.");
+        }
     };
 
     const overlayVariants = {

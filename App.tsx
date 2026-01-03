@@ -226,6 +226,16 @@ const App: React.FC = () => {
     setSelectedService(''); // Reset when closing
   };
 
+  // Auto-open evaluation modal after 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isModalOpen) {
+        setIsModalOpen(true);
+      }
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const SERVICE_CARDS = [
     { id: 'services', index: '01', title: 'Career Counselling', desc: 'Psychometric tests & guidance', icon: <Users className="w-6 h-6 text-blue-600 icon" />, imageUrl: 'https://source.unsplash.com/1600x900/?career%20counselling,mentor' },
     { id: 'study', index: '02', title: 'Study Abroad', desc: 'Global university connections', icon: <Globe className="w-6 h-6 text-blue-600 icon" />, imageUrl: 'https://source.unsplash.com/1600x900/?university,campus,students' },
@@ -431,15 +441,18 @@ const App: React.FC = () => {
           <div className="grid lg:grid-cols-[1fr_1fr] gap-x-12 gap-y-16 items-start mb-32">
 
             {/* Left Col: Career Counselling Matrix */}
-            <div className="space-y-10 bg-slate-100/50 p-6 md:p-10 rounded-[2.5rem] sm:rounded-[3.5rem] border border-slate-200/60 shadow-sm transition-all hover:shadow-md">
-              <h3 className="text-2xl font-black text-slate-800 mb-2 flex items-center gap-3">
-                <Brain className="w-8 h-8 text-teal-500" />
-                Diagnosis Dimensions
-              </h3>
+            <div className="p-0">
+              {/* Header - same height as dashboard header */}
+              <div className="mb-6 min-h-[80px] flex items-end">
+                <h3 className="text-2xl font-black text-slate-800 flex items-center gap-3">
+                  <Brain className="w-8 h-8 text-teal-500" />
+                  Diagnosis Dimensions
+                </h3>
+              </div>
               {/* The Analysis Matrix - Reference Infographic Style */}
-              <div className="flex flex-col gap-8 md:gap-0">
+              <div className="flex flex-col gap-0">
                 {/* Desktop Headers */}
-                <div className="hidden md:grid grid-cols-[140px_1fr_1fr] gap-8 mb-6">
+                <div className="hidden md:grid grid-cols-[140px_1fr_1fr] gap-8 h-[52px] items-center mb-0">
                   <div />
                   <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold py-3 px-6 rounded-full text-center shadow-lg shadow-teal-200/50 text-sm whitespace-nowrap">
                     What We Analyze
@@ -450,17 +463,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 1: PERSONALITY */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
-                  <div className="bg-cyan-200 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0 last:border-0 md:last:border-b">
+                  <div className="bg-cyan-200 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
                     <Users className="w-8 h-8 mb-2 text-slate-800" />
                     <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Personality</span>
                   </div>
-                  <div className="flex flex-col justify-center order-2">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-2">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Self-Understanding:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We assess your most dominant preferences—from how you focus energy to how you make decisions based on logic.</p>
                   </div>
-                  <div className="flex flex-col justify-center order-3">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-3">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Aligns You:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Expand your career options in alignment with your unique personality for a more rewarding career choice.</p>
@@ -468,17 +481,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 2: INTERESTS */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
-                  <div className="bg-amber-200 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0 last:border-0 md:last:border-b">
+                  <div className="bg-amber-200 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
                     <Target className="w-8 h-8 mb-2 text-slate-800" />
                     <span className="font-black text-slate-800 text-xs uppercase tracking-wider">Interests</span>
                   </div>
-                  <div className="flex flex-col justify-center order-2">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-2">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Occupational Interest:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We identify your top interest patterns (e.g., detail-oriented work with data, or analytical problem-solving).</p>
                   </div>
-                  <div className="flex flex-col justify-center order-3">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-3">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Finds Your Fit:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Identifies a clear career focus directly linked to occupations you'll enjoy.</p>
@@ -486,17 +499,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 3: MOTIVATORS */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
-                  <div className="bg-orange-400 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0 last:border-0 md:last:border-b">
+                  <div className="bg-orange-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
                     <Lightbulb className="w-8 h-8 mb-2 text-white" />
                     <span className="font-black text-white text-xs uppercase tracking-wider">Motivators</span>
                   </div>
-                  <div className="flex flex-col justify-center order-2">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-2">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Core Values:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We find what you value most in a career, like working independently or enjoying work routine.</p>
                   </div>
-                  <div className="flex flex-col justify-center order-3">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-3">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Ensures Fulfillment:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">A career in line with your core beliefs is more likely to be a lasting and positive choice.</p>
@@ -504,17 +517,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 4: SKILLS */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0 md:last:border-b">
-                  <div className="bg-sky-300 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0 last:border-0 md:last:border-b">
+                  <div className="bg-sky-300 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
                     <BrainCircuit className="w-8 h-8 mb-2 text-slate-900" />
                     <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Skills</span>
                   </div>
-                  <div className="flex flex-col justify-center order-2">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-2">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Talent Mapping:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">We score your strengths (e.g, Excellent Verbal Ability and Good Logical Ability) and areas needing development.</p>
                   </div>
-                  <div className="flex flex-col justify-center order-3">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-3">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Strategic Development:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Helps you identify different ways to reshape your career direction and focus on skills that give you a career advantage.</p>
@@ -522,17 +535,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 5: LEARNING */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-6 md:py-8 border-b border-slate-200 last:border-0">
-                  <div className="bg-yellow-300 h-28 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0 last:border-0">
+                  <div className="bg-yellow-300 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none order-1">
                     <Brain className="w-8 h-8 mb-2 text-slate-900" />
                     <span className="font-black text-slate-900 text-xs uppercase tracking-wider">Learning</span>
                   </div>
-                  <div className="flex flex-col justify-center order-2">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-2">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">What We Analyze:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Optimal Learning:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">For instance, the report shows a high preference for Auditory Learning (50%).</p>
                   </div>
-                  <div className="flex flex-col justify-center order-3">
+                  <div className="flex flex-col justify-center h-24 md:h-28 order-3">
                     <strong className="block text-slate-900 text-sm font-bold mb-1 md:hidden">Your Benefit:</strong>
                     <strong className="hidden md:block text-slate-900 text-sm font-bold mb-1">Boosts Academics:</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed">Provides concrete strategies (like working in groups or listening to recorded notes) to maximize your study efficiency.</p>
@@ -540,12 +553,12 @@ const App: React.FC = () => {
                 </div>
 
                 {/* ROW 6: EXAMS */}
-                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-8 items-stretch md:items-center py-8">
-                  <div className="bg-slate-800 h-24 md:h-32 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-8 items-stretch md:items-center py-0">
+                  <div className="bg-slate-800 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm rounded-3xl md:rounded-none">
                     <GraduationCap className="w-8 h-8 mb-2 text-amber-400" />
                     <span className="font-black text-amber-400 text-[10px] md:text-xs uppercase tracking-wider">Exams</span>
                   </div>
-                  <div className="flex flex-col justify-center h-full">
+                  <div className="flex flex-col justify-center h-24 md:h-28">
                     <strong className="block text-slate-900 text-sm md:text-lg font-black mb-1">Entrance Exams & Scholarships</strong>
                     <p className="text-slate-600 text-[13px] md:text-xs leading-relaxed font-medium">Prep for IIT-JEE, NEET, CLAT, etc. <span className="text-blue-600 font-bold">Get up to 100% Scholarship.</span></p>
                   </div>
@@ -554,94 +567,83 @@ const App: React.FC = () => {
             </div>
 
             {/* Right Col: Student Dashboard - Strictly Aligned */}
-            <div className="space-y-10 bg-blue-100/40 p-8 md:p-10 rounded-[3.5rem] border border-blue-200/50 shadow-sm transition-all hover:shadow-md">
+            <div className="p-0">
 
               {/* Header Block - Aligned with Left */}
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-4 border-b border-slate-100 text-left h-full min-h-[116px]">
-                <h2 className="text-5xl lg:text-6xl font-black text-blue-600 leading-[0.9] tracking-tighter">
-                  <span className="text-slate-400 font-light">Student</span><br />
+              <div className="mb-6 min-h-[80px] flex items-end">
+                <h2 className="text-4xl lg:text-5xl font-black text-blue-600 leading-[0.95] tracking-tighter">
+                  <span className="text-slate-400 font-light text-2xl lg:text-3xl">Student</span><br />
                   DASHBOARD
                 </h2>
-                <div className="max-w-xs text-right hidden sm:block">
-                  <p className="text-xs font-medium text-slate-500 leading-tight">
-                    <strong className="text-teal-600 block text-sm mb-1">All-in-One Advantage</strong>
-                    Full ecosystem from AI to Admissions.
-                  </p>
-                </div>
               </div>
 
               {/* Dashboard Grid - Matching Matrix Style */}
               {/* Dashboard Infographic List */}
-              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-x-6 md:gap-x-8 gap-y-6 text-sm items-center">
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-x-6 md:gap-x-8 gap-y-0 text-sm items-center">
 
-                {/* Header Pill */}
-                <div className="col-span-2 flex justify-start">
+                {/* Header Pill - same height as left header row */}
+                <div className="col-span-2 flex justify-start h-[52px] items-center mb-0">
                   <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-3 px-8 rounded-full text-center shadow-lg shadow-blue-200/50 text-sm whitespace-nowrap">
                     Tools Included in Dashboard
                   </div>
                 </div>
 
                 {/* ROW 1: REPORT */}
-                <div className="bg-indigo-400 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-indigo-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <FileText className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">Report</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-indigo-700 text-lg font-black mb-1">5D + 30 Page Report</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">Detailed analysis of Personality, Interests, Motivators, Learning Styles, Skills, plus a 15-Year Roadmap.</p>
                 </div>
-                <div className="col-span-2 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 2: COLLEGE */}
-                <div className="bg-teal-400 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-teal-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <Building2 className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">Colleges</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-teal-700 text-lg font-black mb-1">College Explorer</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">Access 2000+ India Campus Univ, 150+ Online Univ, and 3000+ Abroad Universities.</p>
                 </div>
-                <div className="col-span-2 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 3: AI MENTOR */}
-                <div className="bg-amber-400 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-amber-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <Bot className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">AI Mentor</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-amber-700 text-lg font-black mb-1">AI Expert Career Mentor</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">Salary Predictor, Skills in Demand, and 24/7 Career Guidance Chat.</p>
                 </div>
-                <div className="col-span-2 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 4: STUDY ABROAD */}
-                <div className="bg-blue-500 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-blue-500 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <Globe className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">Abroad</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-blue-700 text-lg font-black mb-1">Study Abroad Tool</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">Portfolio Building, SOP Maker, Profile Weightage, and Entrance Exam Trainings.</p>
                 </div>
-                <div className="col-span-2 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 5: WEBSITE */}
-                <div className="bg-pink-400 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-pink-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <Globe className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">Website</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-pink-700 text-lg font-black mb-1">Personal Website</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">Publish your own personal profile site in 15-mins to connect directly with Alumni networks.</p>
                 </div>
-                <div className="col-span-2 h-px bg-slate-200 w-full"></div>
 
                 {/* ROW 6: LIBRARY */}
-                <div className="bg-emerald-400 h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
+                <div className="bg-emerald-400 h-24 md:h-28 w-full flex flex-col items-center justify-center text-center shadow-sm">
                   <BookOpen className="w-8 h-8 mb-2 text-white" />
                   <span className="font-black text-white text-xs uppercase tracking-wider">Library</span>
                 </div>
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center h-24 md:h-28">
                   <strong className="block text-emerald-700 text-lg font-black mb-1">Career Library</strong>
                   <p className="text-slate-600 text-xs leading-relaxed font-medium">20 Career Clusters, 200+ Career paths, 300+ Virtual Internships.</p>
                 </div>
